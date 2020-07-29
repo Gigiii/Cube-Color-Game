@@ -47,7 +47,7 @@ public class MeshGenerator : MonoBehaviour
                 triangles[5 + tris] = vert + xSize + 2;
                 vert++;
                 tris += 6;
-                yield return new WaitForSeconds(.002f);
+                yield return new WaitForSeconds(.001f);
             }
             vert++;
         }
