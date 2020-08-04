@@ -194,7 +194,7 @@ MonoBehaviour:
   - prefab: {fileID: 1371500863184490, guid: f55a6a8c1b950124fa46e022d28c7bdc, type: 3}
     size: {x: 1, y: 1, z: 1}
     min: 0
-    max: 10
+    max: 2
   destroyDistance: 1000
   usePerlinNoise: 1
   noise: {fileID: 0}
