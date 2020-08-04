@@ -65,8 +65,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Cube_Movement.cs" />
-    <Compile Include="Assets\Scripts\GenerateMeshSimple.cs" />
-    <Compile Include="Assets\Scripts\TerrainControllerSimple.cs" />
+    <Compile Include="Assets\Scripts\GenerateMesh.cs" />
+    <Compile Include="Assets\Scripts\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\PlaceObjects.cs" />
+    <Compile Include="Assets\Scripts\TerrainController.cs" />
     <None Include="Assets\ProceduralToolkit\Shaders\VertexColor\Standard Vertex Color.shader" />
     <None Include="Assets\ProceduralToolkit\Shaders\Common.cginc" />
     <None Include="Assets\ProceduralToolkit\Shaders\VertexColor\Specular Vertex Color.shader" />

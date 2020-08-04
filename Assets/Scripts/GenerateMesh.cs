@@ -4,7 +4,7 @@ using UnityEngine;
 using ProceduralToolkit;
 
 [RequireComponent(typeof(MeshFilter))]
-public class GenerateMeshSimple : MonoBehaviour {
+public class GenerateMesh : MonoBehaviour {
 
     private MeshFilter meshFilter;
 
@@ -15,6 +15,9 @@ public class GenerateMeshSimple : MonoBehaviour {
     public Gradient Gradient { get; set; }
 
     public Vector2 NoiseOffset { get; set; }
+
+    private static bool usePerlinNoise = true;
+    public static bool UsePerlinNoise { get { return usePerlinNoise; } set { usePerlinNoise = value; } }
 
     public void Generate() {
         meshFilter = GetComponent<MeshFilter>();
@@ -108,7 +111,10 @@ public class GenerateMeshSimple : MonoBehaviour {
     private static float GetHeight(int x, int z, int xSegments, int zSegments, Vector2 noiseOffset, float noiseScale) {
         float noiseX = noiseScale * x / xSegments + noiseOffset.x;
         float noiseZ = noiseScale * z / zSegments + noiseOffset.y;
-        return Mathf.PerlinNoise(noiseX, noiseZ);
+        if (usePerlinNoise)
+            return Mathf.PerlinNoise(noiseX, noiseZ);
+        else
+            return TerrainController.noisePixels[(int)noiseX % TerrainController.noisePixels.Length][(int)noiseZ % TerrainController.noisePixels[0].Length];
     }
 
 }

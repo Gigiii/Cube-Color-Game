@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{18F8FBD7-D227-A021-C232-090CF99D5780}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProceduralToolkit.Samples", "ProceduralToolkit.Samples.csproj", "{4B7A754A-FDE7-56C8-42BE-972A64A4117E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProceduralToolkit", "ProceduralToolkit.csproj", "{6D6F4C92-97EC-7C09-42F0-C32EF7F33A90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{18F8FBD7-D227-A021-C232-090CF99D5780}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProceduralToolkit.LibTessDotNet", "ProceduralToolkit.LibTessDotNet.csproj", "{5EB97DF9-F776-B67D-5ACF-902577FBF11C}"
 EndProject
@@ -27,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18F8FBD7-D227-A021-C232-090CF99D5780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18F8FBD7-D227-A021-C232-090CF99D5780}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18F8FBD7-D227-A021-C232-090CF99D5780}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18F8FBD7-D227-A021-C232-090CF99D5780}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4B7A754A-FDE7-56C8-42BE-972A64A4117E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4B7A754A-FDE7-56C8-42BE-972A64A4117E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B7A754A-FDE7-56C8-42BE-972A64A4117E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{6D6F4C92-97EC-7C09-42F0-C32EF7F33A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D6F4C92-97EC-7C09-42F0-C32EF7F33A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D6F4C92-97EC-7C09-42F0-C32EF7F33A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F8FBD7-D227-A021-C232-090CF99D5780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F8FBD7-D227-A021-C232-090CF99D5780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F8FBD7-D227-A021-C232-090CF99D5780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F8FBD7-D227-A021-C232-090CF99D5780}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5EB97DF9-F776-B67D-5ACF-902577FBF11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EB97DF9-F776-B67D-5ACF-902577FBF11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EB97DF9-F776-B67D-5ACF-902577FBF11C}.Release|Any CPU.ActiveCfg = Release|Any CPU

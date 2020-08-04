@@ -15,7 +15,7 @@ public class Cube_Movement : MonoBehaviour
     bool rolling;
     private Vector2 initialPos;
     public Vector3 position;
-    float zSpeed = 0;
+    public float zSpeed;
     void Start()
     {
         bounds = GetComponent<MeshRenderer>().bounds;
@@ -24,10 +24,6 @@ public class Cube_Movement : MonoBehaviour
     }
     void Update()
     {
-        if(zSpeed < 5)
-        {
-            zSpeed += 0.01f;
-        }
         Vector3 NewPosition = transform.position;
         NewPosition.z += (zSpeed + 1f) * Time.deltaTime;
         transform.position = NewPosition;

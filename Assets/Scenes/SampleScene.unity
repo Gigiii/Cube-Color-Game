@@ -130,6 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 30231954}
+  - component: {fileID: 30231955}
   - component: {fileID: 30231953}
   m_Layer: 0
   m_Name: MeshGenController
@@ -147,15 +148,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 30231952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f25ff64b90e3e94eb302dbaf132edd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 7eb1db628574dfe48bfd2e1affc4f102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainTilePrefab: {fileID: 7279041411244505159, guid: e7a7f8a1e1cfc4a4aa08eed771131eb9,
+  terrainTilePrefab: {fileID: 1458032746511054, guid: 11edba34140e0b64884b0415dbac3757,
     type: 3}
-  terrainSize: {x: 20, y: 1, z: 30}
+  terrainSize: {x: 20, y: 1, z: 20}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0, g: 0, b: 0, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -183,10 +184,20 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   noiseScale: 0
-  cellSize: 1
-  radiusToRender: 1
+  cellSize: 5
+  radiusToRender: 10
   gameTransforms: []
   playerTransform: {fileID: 750845903}
+  water: {fileID: 0}
+  seed: 1
+  placeableObjects:
+  - prefab: {fileID: 1371500863184490, guid: f55a6a8c1b950124fa46e022d28c7bdc, type: 3}
+    size: {x: 1, y: 1, z: 1}
+    min: 0
+    max: 10
+  destroyDistance: 1000
+  usePerlinNoise: 1
+  noise: {fileID: 0}
 --- !u!4 &30231954
 Transform:
   m_ObjectHideFlags: 0
@@ -196,11 +207,27 @@ Transform:
   m_GameObject: {fileID: 30231952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.144964, y: 0, z: -2.5438342}
-  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &30231955
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30231952}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &750845899
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +240,7 @@ GameObject:
   - component: {fileID: 750845902}
   - component: {fileID: 750845901}
   - component: {fileID: 750845900}
+  - component: {fileID: 750845904}
   - component: {fileID: 750845905}
   m_Layer: 0
   m_Name: Cube
@@ -229,7 +257,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750845899}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -289,12 +317,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750845899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 1.98, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &750845904
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750845899}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 1
 --- !u!114 &750845905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,8 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a7888e751aa8b49bab09981b748647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 360
+  speed: 540
   position: {x: 0, y: 0, z: 0}
+  zSpeed: 16
 --- !u!1 &906370948
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906370948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalPosition: {x: 0, y: 3.91, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
