@@ -31,7 +31,6 @@ public class TerrainController : MonoBehaviour {
     [SerializeField]
     private Transform water;
     public Transform Water { get { return water; } }
-    [SerializeField]
     private int seed;
     [SerializeField]
     private PlaceableObject[] placeableObjects;
@@ -62,6 +61,7 @@ public class TerrainController : MonoBehaviour {
 
     private void Start() {
         InitialLoad();
+        seed = Random.Range(0, 10000);
     }
 
     public void InitialLoad() {

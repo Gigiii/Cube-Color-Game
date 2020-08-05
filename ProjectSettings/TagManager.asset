@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Terrain
+  - First Door
+  - Second Door
+  - Cube
+  - Score
   layers:
   - Default
   - TransparentFX
