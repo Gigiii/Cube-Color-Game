@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - CubeMaterial: {fileID: 2100000, guid: e4e14a673be49d94486fdd9555bf159d, type: 2}
+  - GameOver: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

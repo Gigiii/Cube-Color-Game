@@ -9,6 +9,8 @@ TagManager:
   - Second Door
   - Cube
   - Score
+  - GameOver
+  - MainCol
   layers:
   - Default
   - TransparentFX

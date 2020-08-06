@@ -49,6 +49,6 @@ public class PlaceObjects : MonoBehaviour {
     }
     private Color RandomColor()
     {
-        return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 0.5f);
     }
 }

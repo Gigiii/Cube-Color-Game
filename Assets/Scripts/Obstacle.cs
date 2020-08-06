@@ -7,7 +7,7 @@ public class Obstacle : MonoBehaviour {
     public Material CubeMaterial;
     [SerializeField]
     static int TerrainZNum = 1;
-    [SerializeField]
+    [SerializeField]    
     static int Score = 0;
     private void OnTriggerEnter(Collider collider) {
         if (!collider.CompareTag("Player"))
@@ -40,7 +40,7 @@ public class Obstacle : MonoBehaviour {
             }
             else if(collider.gameObject.GetComponent<Renderer>().material.color == gameObject.GetComponent<Renderer>().material.color)
             {
-                collider.gameObject.GetComponent<Renderer>().material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                collider.gameObject.GetComponent<Renderer>().material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 0.8f);
                 Debug.Log("Color Changed");
                 Debug.Log($"TerrainZNum = {TerrainZNum}");
                 GameObject tile = GameObject.Find($"Terrain Thingy [0 , {TerrainZNum}]");
@@ -72,9 +72,14 @@ public class Obstacle : MonoBehaviour {
                 collider.gameObject.GetComponent<Cube_Movement>().enabled = false;
                 collider.gameObject.GetComponent<Renderer>().material.color = gameObject.GetComponent<Renderer>().material.color;
                 Debug.Log("haha speed go brr");
+                Obstacle.TerrainZNum = 0;
+                Obstacle.Score = -1;
+                collider.gameObject.GetComponent<Cube_Movement>().RollAmount = 0;
+                GameObject.FindWithTag("GameOver").GetComponent<HideGameOver>().ShowGameOver = true;
+
             }
             Obstacle.TerrainZNum += 1;
-            GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().smoothSpeed -= 0.008f;
+            GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().smoothSpeed -= 0.004f;
             Obstacle.Score += 1;
             GameObject.FindWithTag("Score").GetComponent<ScoreCount>().score.text = $"{Score}";
         }

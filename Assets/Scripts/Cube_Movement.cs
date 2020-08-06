@@ -12,6 +12,7 @@ public class Cube_Movement : MonoBehaviour
     Vector3 leftRotationPoint;
     Vector3 rightRotationPoint;
     Bounds bounds;
+    public int RollAmount;
     bool rolling;
     private Vector2 initialPos;
     public Vector3 position;
@@ -50,12 +51,19 @@ public class Cube_Movement : MonoBehaviour
                 }
                 if (initialPos.x > finalPos.x)
                 {
-                    StartCoroutine(Roll(leftRotationPoint));
-
+                    if (RollAmount < 1)
+                    {
+                        StartCoroutine(Roll(leftRotationPoint));
+                        RollAmount += 1;
+                    }
                 }
                 else
                 {
-                    StartCoroutine(Roll(rightRotationPoint));
+                    if (RollAmount > -1)
+                    {
+                        StartCoroutine(Roll(rightRotationPoint));
+                        RollAmount -= 1;
+                    }
                 }
             }
 
