@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class Obstacle : MonoBehaviour {
     public Material CubeMaterial;
@@ -9,6 +10,8 @@ public class Obstacle : MonoBehaviour {
     static int TerrainZNum = 1;
     [SerializeField]    
     static int Score = 0;
+    public bool ScoreShow = false;
+
     private void OnTriggerEnter(Collider collider) {
         if (!collider.CompareTag("Player"))
         {
@@ -76,12 +79,27 @@ public class Obstacle : MonoBehaviour {
                 Obstacle.Score = -1;
                 collider.gameObject.GetComponent<Cube_Movement>().RollAmount = 0;
                 GameObject.FindWithTag("GameOver").GetComponent<HideGameOver>().ShowGameOver = true;
-
+                GameObject.FindWithTag("Score").GetComponent<Text>().color = Color.white;
+                ScoreShow = true;
             }
             Obstacle.TerrainZNum += 1;
             GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().smoothSpeed -= 0.004f;
             Obstacle.Score += 1;
             GameObject.FindWithTag("Score").GetComponent<ScoreCount>().score.text = $"{Score}";
+            GameObject.FindWithTag("Score").GetComponent<Text>().color = collider.gameObject.GetComponent<Renderer>().material.color;
+            ParticleSystem ps = GameObject.FindWithTag("Particle").GetComponent<ParticleSystem>();
+
+            ParticleSystem.MainModule ma = ps.main;
+
+            ma.startColor = collider.gameObject.GetComponent<Renderer>().material.color;    
+            if (ScoreShow == true)
+            {
+                GameObject.FindWithTag("Score").SetActive(false);
+            }
+            else
+            {
+                GameObject.FindWithTag("Score").SetActive(true);
+            }
         }
 
     }
