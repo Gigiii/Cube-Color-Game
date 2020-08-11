@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -11,7 +12,7 @@ public class Obstacle : MonoBehaviour {
     [SerializeField]    
     static int Score = 0;
     public bool ScoreShow = false;
-
+    public GameObject hiscore;
     private void OnTriggerEnter(Collider collider) {
         if (!collider.CompareTag("Player"))
         {
@@ -21,34 +22,34 @@ public class Obstacle : MonoBehaviour {
                 Debug.Log("Color Changed");
                 GameObject tile = GameObject.Find("Terrain Thingy [0 , 1]");
                 Debug.Log(tile);
-                int doornum = Random.Range(0, 2);
+                int doornum = UnityEngine.Random.Range(0, 2);
                 Debug.Log(doornum);
                 Transform door = null;
                 if (doornum == 0)
                 {
                     door = tile.transform.Find("First Door");
-                }else if(doornum == 1)
+                } else if (doornum == 1)
                 {
                     door = tile.transform.Find("Second Door");
                 }
-                if(door != null)
+                if (door != null)
                 {
                     Debug.Log("The door is not a lie");
-                }else
+                } else
                 {
-                    Debug.Log("The door is a lie!");    
+                    Debug.Log("The door is a lie!");
                 }
                 door.GetComponent<Renderer>().material.color = collider.gameObject.GetComponent<Renderer>().material.color;
                 GameObject.FindWithTag("Cube").GetComponent<Cube_Movement>().zSpeed += 1;
             }
-            else if(collider.gameObject.GetComponent<Renderer>().material.color == gameObject.GetComponent<Renderer>().material.color)
+            else if (collider.gameObject.GetComponent<Renderer>().material.color == gameObject.GetComponent<Renderer>().material.color)
             {
-                collider.gameObject.GetComponent<Renderer>().material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 0.8f);
+                collider.gameObject.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), 0.8f);
                 Debug.Log("Color Changed");
                 Debug.Log($"TerrainZNum = {TerrainZNum}");
                 GameObject tile = GameObject.Find($"Terrain Thingy [0 , {TerrainZNum}]");
                 Debug.Log(tile);
-                int doornum = Random.Range(0, 2);
+                int doornum = UnityEngine.Random.Range(0, 2);
                 Debug.Log(doornum);
                 Transform door = null;
                 if (doornum == 0)
@@ -75,12 +76,12 @@ public class Obstacle : MonoBehaviour {
                 collider.gameObject.GetComponent<Cube_Movement>().enabled = false;
                 collider.gameObject.GetComponent<Renderer>().material.color = gameObject.GetComponent<Renderer>().material.color;
                 Debug.Log("haha speed go brr");
+                ScoreShow = true;
                 Obstacle.TerrainZNum = 0;
                 Obstacle.Score = -1;
                 collider.gameObject.GetComponent<Cube_Movement>().RollAmount = 0;
                 GameObject.FindWithTag("GameOver").GetComponent<HideGameOver>().ShowGameOver = true;
                 GameObject.FindWithTag("Score").GetComponent<Text>().color = Color.white;
-                ScoreShow = true;
             }
             Obstacle.TerrainZNum += 1;
             GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().smoothSpeed -= 0.004f;
@@ -94,7 +95,15 @@ public class Obstacle : MonoBehaviour {
             ma.startColor = collider.gameObject.GetComponent<Renderer>().material.color;    
             if (ScoreShow == true)
             {
+                int highscore = PlayerPrefs.GetInt("highscore");
+                if (Obstacle.Score > highscore)
+                {
+                    highscore = Obstacle.Score;
+                    PlayerPrefs.SetInt("highscore", highscore);
+                }
+                hiscore.GetComponent<Text>().text = highscore.ToString();
                 GameObject.FindWithTag("Score").SetActive(false);
+
             }
             else
             {

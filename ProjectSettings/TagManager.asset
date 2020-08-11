@@ -12,6 +12,7 @@ TagManager:
   - GameOver
   - MainCol
   - Particle
+  - HighscoreNum
   layers:
   - Default
   - TransparentFX
