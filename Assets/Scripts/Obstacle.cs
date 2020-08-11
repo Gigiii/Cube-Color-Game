@@ -11,8 +11,9 @@ public class Obstacle : MonoBehaviour {
     static int TerrainZNum = 1;
     [SerializeField]    
     static int Score = 0;
+    public int FinalScore;
     public bool ScoreShow = false;
-    public GameObject hiscore;
+    public Text hiscore;
     private void OnTriggerEnter(Collider collider) {
         if (!collider.CompareTag("Player"))
         {
@@ -77,6 +78,7 @@ public class Obstacle : MonoBehaviour {
                 collider.gameObject.GetComponent<Renderer>().material.color = gameObject.GetComponent<Renderer>().material.color;
                 Debug.Log("haha speed go brr");
                 ScoreShow = true;
+                FinalScore = Obstacle.Score;
                 Obstacle.TerrainZNum = 0;
                 Obstacle.Score = -1;
                 collider.gameObject.GetComponent<Cube_Movement>().RollAmount = 0;
@@ -92,18 +94,11 @@ public class Obstacle : MonoBehaviour {
 
             ParticleSystem.MainModule ma = ps.main;
 
-            ma.startColor = collider.gameObject.GetComponent<Renderer>().material.color;    
+            ma.startColor = collider.gameObject.GetComponent<Renderer>().material.color;
             if (ScoreShow == true)
             {
-                int highscore = PlayerPrefs.GetInt("highscore");
-                if (Obstacle.Score > highscore)
-                {
-                    highscore = Obstacle.Score;
-                    PlayerPrefs.SetInt("highscore", highscore);
-                }
-                hiscore.GetComponent<Text>().text =  $"highscore: {highscore}";
                 GameObject.FindWithTag("Score").SetActive(false);
-
+                ScoreManager.Instance.SetHighScore(FinalScore);
             }
             else
             {

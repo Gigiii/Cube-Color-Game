@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - Obstacle
     - PlaceObjects
     - ScoreCount
+    - ScoreManager
     - TerrainController
     ProceduralToolkit.Samples.dll:
     - ProceduralToolkit.Samples.UI.ButtonControl
@@ -106,6 +107,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13678}
     - Class: 114
       Script: {instanceID: 13800}
+    - Class: 114
+      Script: {instanceID: 17634}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -624,7 +627,7 @@ ScriptsOnlyBuild:
     className: TMP_Asset
   - hash:
       serializedVersion: 2
-      Hash: 2b3150994ea3fb20a5d58b29be41e9a4
+      Hash: 834b42deca244a897eb5157506cff554
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Obstacle
@@ -1084,6 +1087,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 61ce0cd78d28e7d8d9361b95ce54594c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScoreManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/Main Menu.unity
