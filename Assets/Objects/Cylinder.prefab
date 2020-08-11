@@ -109,4 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CubeMaterial: {fileID: 2100000, guid: e4e14a673be49d94486fdd9555bf159d, type: 2}
   ScoreShow: 0
-  hiscore: {fileID: 8669608428701956350, guid: 1eb268dfa93b40d4daa9402f6542a1d0, type: 3}
+  hiscore: {fileID: 3458986476976125898, guid: 26fa8b57d8ea65547a897f8a411896ea, type: 3}

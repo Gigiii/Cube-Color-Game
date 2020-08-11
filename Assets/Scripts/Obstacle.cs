@@ -101,7 +101,7 @@ public class Obstacle : MonoBehaviour {
                     highscore = Obstacle.Score;
                     PlayerPrefs.SetInt("highscore", highscore);
                 }
-                hiscore.GetComponent<Text>().text = highscore.ToString();
+                hiscore.GetComponent<Text>().text =  $"highscore: {highscore}";
                 GameObject.FindWithTag("Score").SetActive(false);
 
             }
