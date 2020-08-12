@@ -77,6 +77,7 @@ public class Obstacle : MonoBehaviour {
                 collider.gameObject.GetComponent<Cube_Movement>().enabled = false;
                 collider.gameObject.GetComponent<Renderer>().material.color = gameObject.GetComponent<Renderer>().material.color;
                 Debug.Log("haha speed go brr");
+                SoundManager.Instance.RunSound("collision");
                 ScoreShow = true;
                 FinalScore = Obstacle.Score;
                 Obstacle.TerrainZNum = 0;

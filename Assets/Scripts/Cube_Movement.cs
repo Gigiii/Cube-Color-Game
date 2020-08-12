@@ -54,6 +54,7 @@ public class Cube_Movement : MonoBehaviour
                     if (RollAmount < 1)
                     {
                         StartCoroutine(Roll(leftRotationPoint));
+                        SoundManager.Instance.RunSound("swoosh");
                         RollAmount += 1;
                     }
                 }
@@ -62,6 +63,7 @@ public class Cube_Movement : MonoBehaviour
                     if (RollAmount > -1)
                     {
                         StartCoroutine(Roll(rightRotationPoint));
+                        SoundManager.Instance.RunSound("swoosh");
                         RollAmount -= 1;
                     }
                 }
