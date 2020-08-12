@@ -14,11 +14,14 @@ public class Obstacle : MonoBehaviour {
     public int FinalScore;
     public bool ScoreShow = false;
     public Text hiscore;
+    public int ZNum;
     private void OnTriggerEnter(Collider collider) {
         if (!collider.CompareTag("Player"))
         {
             if (collider.gameObject.GetComponent<Renderer>().material.color == CubeMaterial.color)
             {
+                PlayerPrefs.SetInt("ZNum", 1);
+                PlayerPrefs.SetInt("Score", 1);
                 collider.gameObject.GetComponent<Renderer>().material.color = gameObject.GetComponent<Renderer>().material.color;
                 Debug.Log("Color Changed");
                 GameObject tile = GameObject.Find("Terrain Thingy [0 , 1]");
@@ -45,10 +48,12 @@ public class Obstacle : MonoBehaviour {
             }
             else if (collider.gameObject.GetComponent<Renderer>().material.color == gameObject.GetComponent<Renderer>().material.color)
             {
+                PlayerPrefs.SetInt("ZNum", PlayerPrefs.GetInt("ZNum") + 1);
+                PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 1);
                 collider.gameObject.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), 0.8f);
                 Debug.Log("Color Changed");
-                Debug.Log($"TerrainZNum = {TerrainZNum}");
-                GameObject tile = GameObject.Find($"Terrain Thingy [0 , {TerrainZNum}]");
+                Debug.Log($"TerrainZNum = {PlayerPrefs.GetInt("ZNum")}");
+                GameObject tile = GameObject.Find($"Terrain Thingy [0 , {PlayerPrefs.GetInt("ZNum")}]");
                 Debug.Log(tile);
                 int doornum = UnityEngine.Random.Range(0, 2);
                 Debug.Log(doornum);
@@ -71,6 +76,7 @@ public class Obstacle : MonoBehaviour {
                 }
                 door.GetComponent<Renderer>().material.color = collider.gameObject.GetComponent<Renderer>().material.color;
                 GameObject.FindWithTag("Cube").GetComponent<Cube_Movement>().zSpeed += 1;
+
             }
             else
             {
@@ -79,17 +85,14 @@ public class Obstacle : MonoBehaviour {
                 Debug.Log("haha speed go brr");
                 SoundManager.Instance.RunSound("collision");
                 ScoreShow = true;
-                FinalScore = Obstacle.Score;
-                Obstacle.TerrainZNum = 0;
-                Obstacle.Score = -1;
+                FinalScore = PlayerPrefs.GetInt("Score");
+                PlayerPrefs.SetInt("ZNum", 0);
+                PlayerPrefs.SetInt("score", 0);
                 collider.gameObject.GetComponent<Cube_Movement>().RollAmount = 0;
                 GameObject.FindWithTag("GameOver").GetComponent<HideGameOver>().ShowGameOver = true;
-                GameObject.FindWithTag("Score").GetComponent<Text>().color = Color.white;
             }
-            Obstacle.TerrainZNum += 1;
             GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().smoothSpeed -= 0.004f;
-            Obstacle.Score += 1;
-            GameObject.FindWithTag("Score").GetComponent<ScoreCount>().score.text = $"{Score}";
+            GameObject.FindWithTag("Score").GetComponent<ScoreCount>().score.text = $"{PlayerPrefs.GetInt("Score")}";
             GameObject.FindWithTag("Score").GetComponent<Text>().color = collider.gameObject.GetComponent<Renderer>().material.color;
             ParticleSystem ps = GameObject.FindWithTag("Particle").GetComponent<ParticleSystem>();
 
